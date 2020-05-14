@@ -1,5 +1,5 @@
 var apiDomain = {
-  api: "http://pvweb.zhenfa.pw",
+  api: "http://101.200.229.64:9091",
 }
 export default {
   api: apiDomain.api

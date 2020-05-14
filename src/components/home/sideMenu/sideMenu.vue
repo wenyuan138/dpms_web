@@ -241,7 +241,7 @@
           color: rgb(204, 130, 0);
         }
       }
-      @media screen and (max-width: 1910px) {
+      @media screen and (max-width: 1800px) {
         p{
           line-height:22px;
         }

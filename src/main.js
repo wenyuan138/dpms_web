@@ -15,6 +15,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 import 'amfe-flexible';
 import $axios from '@/utils/request';
 Vue.prototype.$axios = $axios
+// import axios from 'axios'
+// Vue.prototype.$ajax = axios
 Vue.use(ElementUI)//引入element-ui
 // 加载echarts，注意引入文件的路径
 import echarts from 'echarts'

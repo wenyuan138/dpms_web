@@ -14,11 +14,11 @@
                         <el-input v-model="loginInfo.username" placeholder="请输入用户名" prefix-icon="el-icon-user"></el-input>
                         </el-form-item>
                         <el-form-item>
-                            <el-input v-model="loginInfo.password" placeholder="请输入密码" prefix-icon="el-icon-key"></el-input>
+                            <el-input v-model="loginInfo.password" placeholder="请输入密码" prefix-icon="el-icon-key" show-password></el-input>
                         </el-form-item>
                         <div class="loginBtn">
                             <span>
-                                <input type="checkbox" name="checkbox1" value="7天内自动登录" checked="checked"/>
+                                <input type="checkbox" name="checkbox1" value="7天内自动登录" :checked="checked"/>
                                 7天内自动登录
                             </span>
                             <el-button @click="login" round size="mini" class="submitBtn">登 录</el-button>
@@ -46,36 +46,37 @@
         },
         mounted () {
             //判断是否记住账号密码
-            // this.checkLogin()
+            this.checkLogin()
             //获取公钥
             // this.getPublicKey();
         },
         methods: {
             //登陆
             login () {
-                if (this.loginInfo.password === '' && this.loginInfo.username === '') {
-                    this.$router.push({ name: "Home" })
-                    return
-                }//跳过验证直接进入首页
+                // if (this.loginInfo.password === '' && this.loginInfo.username === '') {
+                //     this.$router.push({ name: "Home" })
+                //     return
+                // }//跳过验证直接进入首页
                 this.$refs['loginInfo'].validate((valid) => {
                     if (valid) {
-                        let password = this.encryptedData(this.publicKey, this.loginInfo.password);
+                        // let password = this.encryptedData(this.publicKey, this.loginInfo.password);
                         let data = {
-                            userAccount: this.loginInfo.username,
-                            userPw: password
+                            username: this.loginInfo.username,
+                            password: this.loginInfo.password
                         }
                         this.api.login.login(data).then(async (res) => {
-                            if (res.code === 2000) {
+                            console.log(res)
+                            if (res.status === 200) {
                                 // 存储登录后的token以及refreshToken;
-                                window.localStorage.setItem('token', res.value.authorization);
-                                //存储登录信息
-                                if (this.checked == true) {
-                                    this.loginMessage[0].username = this.userInfo.username
-                                    this.loginMessage[0].password = this.userInfo.password
-                                    window.localStorage.setItem('usernameAndPassword', JSON.stringify(this.loginMessage));
-                                } else {
-                                    window.localStorage.removeItem('usernameAndPassword')
-                                }
+                                window.localStorage.setItem('token', res.data.token);
+                                // //存储登录信息
+                                // if (this.checked == true) {
+                                //     this.loginMessage[0].username = this.userInfo.username
+                                //     this.loginMessage[0].password = this.userInfo.password
+                                //     window.localStorage.setItem('usernameAndPassword', JSON.stringify(this.loginMessage));
+                                // } else {
+                                //     window.localStorage.removeItem('usernameAndPassword')
+                                // }
                                 this.$router.push({ name: "Home" })
                             }
                         })
@@ -83,22 +84,22 @@
                 })
             },
             // 加密
-            encryptedData (publicKey, data) {
-                // 新建JSEncrypt对象
-                let encryptor = new JSEncrypt();
-                // 设置公钥
-                encryptor.setPublicKey(publicKey);
-                // 加密数据
-                return encryptor.encrypt(data);
-            },
+            // encryptedData (publicKey, data) {
+            //     // 新建JSEncrypt对象
+            //     let encryptor = new JSEncrypt();
+            //     // 设置公钥
+            //     encryptor.setPublicKey(publicKey);
+            //     // 加密数据
+            //     return encryptor.encrypt(data);
+            // },
             //获取公钥
-            getPublicKey () {
-                this.api.login.getPublicKey().then((res) => {
-                    if (res.code = 2000) {
-                        this.publicKey = res.value.publicKey;
-                    }
-                })
-            },
+            // getPublicKey () {
+            //     this.api.login.getPublicKey().then((res) => {
+            //         if (res.code = 2000) {
+            //             this.publicKey = res.value.publicKey;
+            //         }
+            //     })
+            // },
             //判断是否记住账号密码
             checkLogin () {
                 let getLoginMessage = JSON.parse(window.localStorage.getItem("usernameAndPassword"))

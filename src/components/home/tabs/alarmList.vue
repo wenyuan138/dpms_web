@@ -134,9 +134,9 @@
           color: white;
           font-size: 16px;
         }
-        @media screen and (max-width: 1910px) {
+        @media screen and (max-width: 1800px) {
           /deep/.el-input__inner {
-            width: 250px;
+            width: 200px;
           }
         }
         /deep/.el-range-separator {
@@ -154,7 +154,7 @@
           padding: 0.25em;
           border-radius: 0.25em;
           height: 31px;
-          width: 100px;
+          width: 80px;
         }
       }
     }
@@ -198,9 +198,9 @@
         left: 50%;
       }
     }
-    @media screen and (max-width: 1910px) {
+    @media screen and (max-width: 1800px) {
       .content{
-        height:500px;
+        height:600px;
       }
     }
   }

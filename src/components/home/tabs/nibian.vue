@@ -389,7 +389,7 @@
                 color: #16aa29;
                 font-weight: 600;
               }
-              @media screen and (max-width: 1910px) {
+              @media screen and (max-width: 1800px) {
                 .font {
                   display:block;
                 }
@@ -414,7 +414,7 @@
             font-size: 12px;
             font-weight: 700;
             text-align: left;
-            @media screen and (max-width: 1910px) {
+            @media screen and (max-width: 1800px) {
               p {
                 margin: 5px 0;
               }
@@ -501,7 +501,7 @@
             }
           }
         }
-        @media screen and (max-width: 1910px) {
+        @media screen and (max-width: 1800px) {
           .bottomContent {
             height: 280px;
           }

@@ -203,9 +203,9 @@
         bottom:50px;
       }
     }
-    @media screen and (max-width: 1910px) {
+    @media screen and (max-width: 1800px) {
       .content{
-        height:530px;
+        height:600px;
       }
     }
   }

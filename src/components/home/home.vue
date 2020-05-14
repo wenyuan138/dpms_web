@@ -120,7 +120,7 @@
         text-align: center;
         border: none;
       }
-      @media screen and (max-width: 1910px) {
+      @media screen and (max-width: 1800px) {
         /deep/.el-tabs__item{
           width:150px;
         }

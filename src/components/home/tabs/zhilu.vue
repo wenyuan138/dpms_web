@@ -145,9 +145,9 @@
         /deep/.el-input {
           width: 200px;
         }
-        @media screen and (max-width: 1910px) {
+        @media screen and (max-width: 1800px) {
           /deep/.el-input{
-            width: 150px;
+            width: 100px;
           }
         }
         /deep/.el-range-separator {
@@ -208,9 +208,9 @@
         left: 50%;
       }
     }
-    @media screen and (max-width: 1910px) {
+    @media screen and (max-width: 1800px) {
       .content{
-        height:500px;
+        height:600px;
       }
     }
   }

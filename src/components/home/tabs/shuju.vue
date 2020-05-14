@@ -268,9 +268,9 @@
         /deep/.el-input {
           width: 160px;
         }
-        @media screen and (max-width: 1910px) {
+        @media screen and (max-width: 1800px) {
           /deep/.el-input {
-            width: 120px;
+            width: 100px;
           }
         }
         /deep/.el-range-separator {
@@ -290,6 +290,11 @@
           border-radius: 0.25em;
           height: 31px;
           width: 120px;
+        }
+        @media screen and (max-width: 1800px) {
+          .alarmSelect{
+            width:80px;
+          }
         }
       }
       .dataSearch:nth-of-type(1) {
@@ -332,7 +337,7 @@
         left: 700px;
       }
     }
-    @media screen and (max-width: 1910px) {
+    @media screen and (max-width: 1800px) {
       .content {
         height: 460px;
       }
