@@ -65,10 +65,9 @@
                             password: this.loginInfo.password
                         }
                         this.api.login.login(data).then(async (res) => {
-                            console.log(res)
-                            if (res.status === 200) {
+                            if (res.errCode === 0) {
                                 // 存储登录后的token以及refreshToken;
-                                window.localStorage.setItem('token', res.data.token);
+                                window.localStorage.setItem('token', res.token);
                                 // //存储登录信息
                                 // if (this.checked == true) {
                                 //     this.loginMessage[0].username = this.userInfo.username
@@ -178,4 +177,3 @@
       }
     }
 </style>
-

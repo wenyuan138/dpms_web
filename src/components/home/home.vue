@@ -62,6 +62,7 @@
     methods: {
       //退出登录
       loginOut () {
+        window.localStorage.removeItem("token");
         this.$router.push({ name: 'Login' })
       },
       //点击tab页时加载相应接口
