@@ -173,6 +173,10 @@
             }
             this.duibiData.series.push(obj)
           })
+          this.duibiData.series.forEach(item=>{
+            console.log(item.data)
+          })
+          // console.log(this.duibiData.series)
         } else {
           this.chartData = []
           this.duibiData.series = []

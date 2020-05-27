@@ -50,7 +50,7 @@ function testWhite(params) {
 service.interceptors.request.use(config => {
   !testWhite(config.url) && (showFullScreenLoading());
   if (window.localStorage.token) {
-    // config.headers['Authorization'] = `${localStorage.token}`//添加请求头
+    config.headers['token'] = `${localStorage.token}`//添加请求头
   }
   return config;
 }, error => {
@@ -61,6 +61,9 @@ service.interceptors.request.use(config => {
 service.interceptors.response.use(response => {
   if (response.data.errCode !== 0 && response.data.errMsg) {
     Message.error(response.data.errMsg || "网络错误");
+  }
+  if (response.data.errCode === 3002){
+    this.$router.push({path:'/login'})
   }
   !testWhite(response.request.responseURL) && tryHideFullScreenLoading()
   return response.data;

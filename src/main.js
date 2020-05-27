@@ -7,6 +7,8 @@ import store from './store'
  */
 import api from '@/apis/index.js';
 Vue.prototype.api = api//接口统一管理
+import utils from '@/utils/methods.js'
+Vue.prototype.utils = utils;
 /**
  * 加载各个插件
  */
