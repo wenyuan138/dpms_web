@@ -3,10 +3,10 @@ import request from '@/utils/request'
 let api = {
   //首页接口
   shouye: {
-    //获取首页tab数据
+    //获取实时功率统计
     getACOutActPower: (data) => {
       return request({
-        url: '/getACOutActPower',
+        url: '/GetRtPower',
         method: 'post',
         data
       })

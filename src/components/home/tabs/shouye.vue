@@ -101,8 +101,7 @@
         this.tableData = []
         let data = {
           StartTime: this.utils.fomrmatDate(new Date(new Date().toLocaleDateString())),
-          EndTime: this.utils.fomrmatDate(new Date()),
-          MeasureKey: "KC00002.0001.0018",
+          EndTime: this.utils.fomrmatDate(new Date())
         }
         this.api.tabs.shouye.getACOutActPower(data).then(res => {
           if (res.errCode === 0) {
@@ -111,7 +110,7 @@
             let data = res.data.Records
             data.forEach(item=>{
               x.push(this.utils.fomrmatDate(item.Ts))
-              y.push(item.OutActPower)
+              y.push(item.Value)
             })
             this.chartDatas = JSON.parse(JSON.stringify(this.chartData))
             this.chartDatas.xAxis.data = x;
@@ -131,7 +130,6 @@
         })
         this.chartData.xAxis.data = this.xData;
         this.chartData.series[0].data = this.yData;
-        console.log(this.xData,this.yDatas)
         res.Data[1].forEach(item => {
           res.Data[2].forEach(items => {
             if (item.gckID == items.gckID) {
