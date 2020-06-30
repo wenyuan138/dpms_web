@@ -110,7 +110,7 @@
             let data = res.data.Records
             data.forEach(item => {
               x.push(this.utils.fomrmatDate(item.Ts))
-              y.push(item.Value)
+              y.push((item.Value/1000).toFixed(2))
             })
             this.chartDatas = JSON.parse(JSON.stringify(this.chartData))
             this.chartDatas.title.text = '实时功率统计 (单位：kW)'
