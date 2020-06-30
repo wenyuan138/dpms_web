@@ -108,18 +108,29 @@
             let x = []
             let y = []
             let data = res.data.Records
-            data.forEach(item=>{
+            data.forEach(item => {
               x.push(this.utils.fomrmatDate(item.Ts))
               y.push(item.Value)
             })
             this.chartDatas = JSON.parse(JSON.stringify(this.chartData))
-            this.chartDatas.xAxis.data = x;
-            this.chartDatas.series[0].data = y;
             this.chartDatas.title.text = '实时功率统计 (单位：kW)'
-            this.chartDatas.series[0].areaStyle = {
-              color: 'rgb(71,81,91)'
-            }
-            this.chartDatas.series[0].lineStyle.normal.color = 'rgb(154,189,221)'
+            this.chartDatas.xAxis.data = x;
+            this.chartDatas.series = [{
+              name: '功率',
+              type: 'line',
+              smooth: true,
+              showSymbol: false,
+              hoverAnimation: false,
+              data: y,
+              lineStyle: {
+                normal: {
+                  color: 'rgb(154,189,221)'
+                }
+              },
+              areaStyle: {
+                color: 'rgb(71,81,91)'
+              }
+            }]
           }
         })
         let res = { "TotalNum": 0, "Data": [[{ "collectTime": "05:00", "powGenerDay": 0.0, "acOutActPow": 0.0 }, { "collectTime": "05:15", "powGenerDay": 0.0, "acOutActPow": 22.0 }, { "collectTime": "05:30", "powGenerDay": 0.0, "acOutActPow": 52.0 }, { "collectTime": "05:45", "powGenerDay": 0.0, "acOutActPow": 245.0 }, { "collectTime": "06:00", "powGenerDay": 0.2, "acOutActPow": 596.0 }, { "collectTime": "06:15", "powGenerDay": 0.4, "acOutActPow": 2055.0 }, { "collectTime": "06:30", "powGenerDay": 1.4, "acOutActPow": 3889.0 }, { "collectTime": "06:45", "powGenerDay": 2.0, "acOutActPow": 2029.0 }, { "collectTime": "07:00", "powGenerDay": 2.7, "acOutActPow": 3959.0 }, { "collectTime": "07:15", "powGenerDay": 3.5, "acOutActPow": 4368.0 }, { "collectTime": "07:30", "powGenerDay": 5.9, "acOutActPow": 10304.0 }, { "collectTime": "07:45", "powGenerDay": 9.0, "acOutActPow": 13877.0 }, { "collectTime": "08:00", "powGenerDay": 12.5, "acOutActPow": 16720.0 }, { "collectTime": "08:15", "powGenerDay": 15.2, "acOutActPow": 15227.0 }, { "collectTime": "08:30", "powGenerDay": 18.8, "acOutActPow": 13485.0 }, { "collectTime": "08:45", "powGenerDay": 23.1, "acOutActPow": 14529.0 }, { "collectTime": "09:00", "powGenerDay": 27.3, "acOutActPow": 22541.0 }, { "collectTime": "09:15", "powGenerDay": 33.8, "acOutActPow": 19285.0 }, { "collectTime": "09:30", "powGenerDay": 38.8, "acOutActPow": 19796.0 }, { "collectTime": "09:45", "powGenerDay": 44.1, "acOutActPow": 27148.0 }, { "collectTime": "10:00", "powGenerDay": 54.3, "acOutActPow": 54987.0 }, { "collectTime": "10:15", "powGenerDay": 66.7, "acOutActPow": 29114.0 }, { "collectTime": "10:30", "powGenerDay": 71.8, "acOutActPow": 21254.0 }, { "collectTime": "10:45", "powGenerDay": 75.6, "acOutActPow": 11151.0 }, { "collectTime": "11:00", "powGenerDay": 79.1, "acOutActPow": 15661.0 }, { "collectTime": "11:15", "powGenerDay": 82.5, "acOutActPow": 14222.0 }, { "collectTime": "11:30", "powGenerDay": 85.5, "acOutActPow": 13676.0 }, { "collectTime": "11:45", "powGenerDay": 88.8, "acOutActPow": 15942.0 }, { "collectTime": "12:00", "powGenerDay": 100.4, "acOutActPow": 93186.0 }, { "collectTime": "12:15", "powGenerDay": 125.3, "acOutActPow": 99336.0 }, { "collectTime": "12:30", "powGenerDay": 145.5, "acOutActPow": 29383.0 }, { "collectTime": "12:45", "powGenerDay": 150.7, "acOutActPow": 13533.0 }, { "collectTime": "13:00", "powGenerDay": 153.2, "acOutActPow": 7304.0 }, { "collectTime": "13:15", "powGenerDay": 154.9, "acOutActPow": 5556.0 }, { "collectTime": "13:30", "powGenerDay": 156.8, "acOutActPow": 12946.0 }, { "collectTime": "13:45", "powGenerDay": 161.7, "acOutActPow": 22705.0 }, { "collectTime": "14:00", "powGenerDay": 167.5, "acOutActPow": 14482.0 }, { "collectTime": "14:15", "powGenerDay": 170.5, "acOutActPow": 15430.0 }], [{ "gckID": "2", "gckName": "白塔子镇杨杖子村", "powGenerSum": 444731.89999999997, "powGenerDay": 173.08, "acOutActPow": 13969.0 }], [{ "gckID": 1, "count": 6, "scale": 0.19602 }, { "gckID": 2, "count": 6, "scale": 0.19602 }]], "JsonData": "", "ReUrl": "", "IsSuccess": true, "ErrorCode": "", "ErrorMsg": "", "InfoMsg": "", "OtherInfo": null }
@@ -142,21 +153,21 @@
         this.zhandianData.title.text = '站点累计发电量 （单位：万kWh）'
         let x = []
         let y = []
-        this.tableData.forEach(item=>{
-          y.push(Math.round(item.powGenerSum/1000)/10)
+        this.tableData.forEach(item => {
+          y.push(Math.round(item.powGenerSum / 1000) / 10)
           x.push(item.gckName)
         })
         this.zhandianData.series[0].data = y;
         this.zhandianData.series[0].type = 'bar';
         this.zhandianData.xAxis.data = x
         this.zhandianData.series[0] = {
-            name: '累计发电量',
-            type: 'bar',
-            smooth: true,
-            showSymbol: false,
-            hoverAnimation: false,
-            data: y,
-          }
+          name: '累计发电量',
+          type: 'bar',
+          smooth: true,
+          showSymbol: false,
+          hoverAnimation: false,
+          data: y,
+        }
       },
     },
   }
