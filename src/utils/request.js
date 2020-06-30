@@ -65,7 +65,7 @@ service.interceptors.response.use(response => {
     Message.error(response.data.errMsg || "网络错误");
   }
   if (response.data.errCode === 3002){
-    this.$router.push({path:'/login'})
+    router.push({path:'/login'})
   }
   !testWhite(response.request.responseURL) && tryHideFullScreenLoading()
   return response.data;
