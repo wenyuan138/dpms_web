@@ -14,7 +14,9 @@ const service = axios.create({//如果一个项目从多个不同的地址请求
 let loading        //定义loading变量
 let needLoadingRequestCount = 0 //接口请求个数。
 function startLoading() {    //使用Element loading-start 方法
-  loading = Loading.service();
+  loading = Loading.service({
+    background:'rgba(255,255,255,0.1)'
+  });
 }
 function endLoading() {    //使用Element loading-close 方法
   loading.close()

@@ -68,7 +68,7 @@
       //点击tab页时加载相应接口
       handleClick (tab, event) {
         if (tab.name === "home") {
-          this.$refs.shouYe.getShouYeData()
+          this.$refs.shouYe.getACOutActPower()
         }else if (tab.name === "nibianqi"){
           this.$refs.niBian.mountedMethods()
         }else if (tab.name === 'startTable'){
