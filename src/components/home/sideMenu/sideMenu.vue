@@ -124,7 +124,7 @@
         //     console.log(res)
         //   }
         // })
-        let res = { "TotalNum": 0, "Data": { "Day": 786.99, "Month": 4740.21, "Year": 90746.989840000024, "Sum": 668037.99921998836, "Power": 109123.0, "inverterState": [{ "State": "正常", "Count": 4 }, { "State": "正常待机", "Count": 0 }, { "State": "异常告警", "Count": 0 }, { "State": "通讯异常", "Count": 2 }], "ErrorList": [], "StandbyList": [], "OutLineList": ["白塔子镇杨杖子村8#逆变器", "白塔子镇杨杖子村11#逆变器"], "PVInfo": { "Name": "朝阳", "TransferDate": "2018-05-18", "InverterCount": 6, "OpScale": 0.19602 } }, "JsonData": "", "ReUrl": "", "IsSuccess": true, "ErrorCode": "", "ErrorMsg": "", "InfoMsg": "", "OtherInfo": null }
+        let res = { "TotalNum": 0, "Data": { "Day": 786.99, "Month": 4740.21, "Year": 90746.989840000024, "Sum": 668037.99921998836, "Power": 109123.0, "inverterState": [{ "State": "正常", "Count": 4 }, { "State": "正常待机", "Count": 0 }, { "State": "异常告警", "Count": 0 }, { "State": "通讯异常", "Count": 2 }], "ErrorList": [], "StandbyList": [], "OutLineList": ["白塔子镇杨杖子村8#逆变器", "白塔子镇杨杖子村11#逆变器"], "PVInfo": { "Name": "无锡", "TransferDate": "2018-05-18", "InverterCount": 6, "OpScale": 0.19602 } }, "JsonData": "", "ReUrl": "", "IsSuccess": true, "ErrorCode": "", "ErrorMsg": "", "InfoMsg": "", "OtherInfo": null }
         this.sideMenuData = res.Data
         this.startTime = Math.abs(this.getBeforeDate(this.sideMenuData.PVInfo.TransferDate)) + 1
       },
